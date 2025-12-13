@@ -23,15 +23,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = "django-insecure-06-m&v%%*l1!)uv)@wwft8kvk&3wj)p+jeb2l9*!v9ju1sayu9"
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'your-local-secret-key')
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+#SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'your-local-secret-key')
+#DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-
-# SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
 
 #ALLOWED_HOSTS = []
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
+#ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-key")
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = os.getenv("DEBUG", "False") == "True"
+
+# Allowed hosts (Render, Vercel, custom domains)
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
+
 
 
 # Application definition
